@@ -1,0 +1,42 @@
+/**
+ * Custom Properties
+ * aka CSS variables.
+ *
+ * @link: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+ **/
+
+:root {
+	--global-font-color: #333;
+	--global-font-family: "Montserrat", serif;
+	--global-font-size: 16;
+	--global-font-line-height: 1.4;
+	--highlight-font-family: "Montserrat";
+	--content-width: 45rem;
+	--dropdown_nav-symbol-width: 0.7em;
+
+	/* Custom editor colors */
+	--color-theme-primary: #c38f4d;
+	--color-theme-secondary: #333392;
+	--color-theme-red: #c0392b;
+	--color-theme-green: #27ae60;
+	--color-theme-blue: #2980b9;
+	--color-theme-yellow: #f1c40f;
+	--color-theme-black: #1c2833;
+	--color-theme-grey: #faf9f6;
+	--color-theme-white: #ffffff;
+	--color-custom-daylight: #97c0b7;
+	--color-custom-sun: #eee9d1;
+
+	--color-link: #333392;
+	--color-link-visited: #333;
+	--color-link-active: #00a0d2;
+
+	--color-quote-border: #000;
+	--color-quote-citation: #6c7781;
+
+	/* Custom editor font sizes */
+	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
+	--font-size-regular: calc(var(--global-font-size) / 16 * 1rem);
+	--font-size-large: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-larger: calc(48 / var(--global-font-size) * 1rem);
+}

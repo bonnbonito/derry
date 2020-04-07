@@ -1,0 +1,129 @@
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.banner-slider .banner-swipe {
+	text-align: left;
+	position: relative;
+	z-index: 2;
+}
+
+.banner-slider .swiper-slide,
+.work-slider .swiper-slide {
+    -webkit-box-pack: inherit;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+    height: 550px;
+    background-position: center;
+	background-size: cover;
+	padding: 2.5em 5em;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.banner-slider .swiper-slide::after {
+	position: absolute;
+	width: 40%;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: rgba(0,0,0,.25);
+    content: "";
+    display: inline-block;
+    z-index: 1;
+}
+
+.banner-swipe h3,
+.banner-swipe h2 {
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.banner-swipe h3 {
+	font-size: 26px;
+}
+
+.banner-swipe h2 {
+	font-size: 80px;
+	font-weight: 700;
+}
+
+.banner-swipe a {
+	padding: .75em 3.5em;
+    display: inline-block;
+    text-transform: uppercase;
+    color: #fff;
+    background: #c38f4d;
+    font-size: 16px;
+}
+
+.testimonials-slider .swiper-slide {
+	max-width: 690px;
+	height: 450px;
+	width: 100%;
+	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	background-color: #e1e1e1;
+	color: #1a1a1a;
+	background-position: center;
+	border: 2px solid #ddd;
+	padding: 6%;
+	box-sizing: border-box;
+	background-size: cover;
+}
+
+.testimonials-slider .swiper-slide.swiper-slide-active {
+	background-color: #c38f4d;
+	background-image: url( '../images/polylines.png' );
+	background-position: center;
+	border: 2px solid transparent;
+	color: #fff;
+}
+
+.polygon-contents img {
+	width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+	border: 5px solid #333392;
+	margin-bottom: 1em;
+}
+
+.polygon-contents {
+	text-align: center;
+}
+
+.polygon-contents p {
+	line-height: 1.75;
+	color: #1a1a1a;
+}
+
+.swiper-slide-active.polygon-contents p {
+	color: #fff;
+}
+
+.polygon-contents .name {
+	font-weight: 700;
+	margin-top: 1em;
+	font-size: 110%;
+}
