@@ -595,6 +595,17 @@ select {
 /*--------------------------------------------------------------
 # Content navigation
 --------------------------------------------------------------*/
+.site-main {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+@media ( min-width: 768px ) {
+	.site-main {
+		padding: 0;
+	}
+}
+
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation,

@@ -7,40 +7,32 @@
 
 namespace WP_Rig\WP_Rig;
 
-?>
+if ( have_rows( 'testimonials', 'option' ) ) :
+	?>
 <div class="hero testimonials">
 	<div class="hero-body">
 		<div class="container">
 			<h2 class="title section-title is-3 is-uppercase has-text-centered">Testimonials</h2>
 			<div class="swiper-container testimonials-slider">
 				<div class="swiper-wrapper">
+					<?php 
+					while ( have_rows( 'testimonials', 'option' ) ) : 
+						the_row(); 
+					?>
 					<div class="swiper-slide">
 						<div class="polygon">
 							<div class="polygon-contents">
-								<img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/face.png' ) ); ?>" alt="">
-								<p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad m</p>
-								<p class="name">John Doe</p>
+								<?php if ( get_sub_field( 'image' ) ) : ?>
+									<img src="<?php echo esc_url( get_sub_field( 'image' )['url'] ); ?>" alt="">
+								<?php endif;  ?>
+								<p><?php the_sub_field( 'content' ); ?></p>
+								<p class="name"><?php the_sub_field( 'name' ); ?></p>
 							</div>
 						</div>
 					</div>
-					<div class="swiper-slide">
-						<div class="polygon">
-							<div class="polygon-contents">
-								<img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/face.png' ) ); ?>" alt="">
-								<p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad m</p>
-								<p class="name">John Doe 2</p>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="polygon">
-							<div class="polygon-contents">
-								<img src="<?php echo esc_url( get_theme_file_uri( '/assets/images/face.png' ) ); ?>" alt="">
-								<p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad m</p>
-								<p class="name">John Doe 3</p>
-							</div>
-						</div>
-					</div>
+					<?php 
+					endwhile; 
+					?>					
 				</div>
 				<div class="testi-nav">
 					<div class="testi-prev"><i class="fas fa-arrow-left"></i></div>
@@ -71,3 +63,6 @@ namespace WP_Rig\WP_Rig;
 		</div>
 	</div>
 </div>
+	<?php 
+	endif; 
+?>

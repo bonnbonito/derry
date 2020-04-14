@@ -64,8 +64,14 @@
 }
 
 .banner-swipe h2 {
-	font-size: 80px;
 	font-weight: 700;
+	font-size: 30px;
+}
+
+@media ( min-width: 768px ) {
+	.banner-swipe h2 {
+		font-size: 80px;
+	}
 }
 
 .banner-swipe a {
@@ -80,8 +86,7 @@
 .testimonials-slider .swiper-slide {
 	max-width: 690px;
 	height: 450px;
-	width: 100%;
-	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	width: 100%;	
 	background-color: #e1e1e1;
 	color: #1a1a1a;
 	background-position: center;
@@ -97,6 +102,12 @@
 	background-position: center;
 	border: 2px solid transparent;
 	color: #fff;
+}
+
+@media ( min-width: 768px ) {
+	.testimonials-slider .swiper-slide {
+		clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	}
 }
 
 .polygon-contents img {

@@ -19,35 +19,26 @@ wp_rig()->print_styles( 'wp-rig-content' );
 		<?php
 		while ( have_posts() ) {
 			the_post();
-				?>
-		<div class="banner-slider-wrap">
+				
+			if ( have_rows( 'banner_slides' ) ) :
+			?>
+			<div class="banner-slider-wrap">
 				<div class="container">
 					<div class="swiper-container banner-slider">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide" style="background-image: url( <?php echo esc_url( get_theme_file_uri( '/assets/images/b1.png' ) ); ?> );">
+							<?php
+							while ( have_rows( 'banner_slides' ) ) :
+								the_row();
+								$bgImage = get_sub_field( 'background_image' ) ? get_sub_field( 'background_image' )['url'] : get_theme_file_uri( '/assets/images/b1.png' );
+								?>
+							<div class="swiper-slide" style="background-image: url( <?php echo esc_url( $bgImage ); ?> );">
 								<div class="banner-swipe">
-									<h3>WHERE THE HOUSE becomes</h3>
-									<h2>YOUR home</h2>
-									<a href="#">Contact</a>
+									<?php the_sub_field( 'content' ); ?>
+									<a href="<?php the_sub_field( 'link_url' ); ?>"><?php the_sub_field( 'link' ); ?></a>
 									<div class="overlay"></div>
 								</div>
 							</div>
-							<div class="swiper-slide" style="background-image: url( <?php echo esc_url( get_theme_file_uri( '/assets/images/b1.png' ) ); ?> );">
-								<div class="banner-swipe">
-									<h3>WHERE THE HOUSE becomes</h3>
-									<h2>YOUR home</h2>
-									<a href="#">Contact</a>
-									<div class="overlay"></div>
-								</div>
-							</div>
-							<div class="swiper-slide" style="background-image: url( <?php echo esc_url( get_theme_file_uri( '/assets/images/b1.png' ) ); ?> );">
-								<div class="banner-swipe">
-									<h3>WHERE THE HOUSE becomes</h3>
-									<h2>YOUR home</h2>
-									<a href="#">Contact</a>
-									<div class="overlay"></div>
-								</div>
-							</div>
+							<?php endwhile; ?>
 						</div>
 						<div class="swiper-button-prev swiper-button-white"></div>
 						<div class="swiper-button-next swiper-button-white"></div>
@@ -69,6 +60,9 @@ wp_rig()->print_styles( 'wp-rig-content' );
 			</div>
 
 			<div class="spacer"></div>
+				<?php
+			endif;
+			?>
 
 			<?php
 			get_template_part( 'template-parts/content/entry', 'services' );
@@ -78,20 +72,17 @@ wp_rig()->print_styles( 'wp-rig-content' );
 		<div class="hero about-content">
 			<div class="hero-body">
 				<div class="container w1062">
+					<?php
+					$images = get_field( 'gallery_slider' );
+					$size = 'full';
+					if ( $images ): ?>
 					<div class="swiper-container services-slider">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<img src=<?php echo esc_url( get_theme_file_uri( '/assets/images/s1.png' ) ); ?> alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src=<?php echo esc_url( get_theme_file_uri( '/assets/images/s1.png' ) ); ?> alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src=<?php echo esc_url( get_theme_file_uri( '/assets/images/s1.png' ) ); ?> alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src=<?php echo esc_url( get_theme_file_uri( '/assets/images/s1.png' ) ); ?> alt="">
-							</div>
+							<?php foreach( $images as $image ): ?>
+								<div class="swiper-slide">
+									<img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>" />
+								</div>
+							<?php endforeach; ?>
 						</div>
 						<!-- Add Pagination -->
 						<div class="swiper-pagination"></div>
@@ -99,6 +90,7 @@ wp_rig()->print_styles( 'wp-rig-content' );
 					<script>
 					let servicesSwiper = new Swiper ('.services-slider', {
 						loop: true,
+						autoHeight: true,
 						autoplay: {
 							delay: 22500,
 							disableOnInteraction: false,
@@ -109,12 +101,12 @@ wp_rig()->print_styles( 'wp-rig-content' );
 						},
 					})
 					</script>
+					<?php endif; ?>
 					<div class="columns is-gapless">
 						<div class="column">
 							<div class="about-box f14 has-theme-grey-background-color">
 								<div class="content has-text-centered">
-									<h3>New Homes & Extensions</h3>
-									<p>Having worked on commerical and domestic projects, Derry Design & Build are confident we can make your new home dream a reality by our craftmanship and attention to detail.</p>
+									<?php the_field( 'bottom_content' ); ?>
 								</div>
 							</div>
 						</div>						

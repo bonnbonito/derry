@@ -30,6 +30,7 @@ class Component implements Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_enqueue_mla' ] );
+		add_action( 'init', [ $this, 'add_options_page' ] );
 	}
 
 	/**
@@ -37,6 +38,23 @@ class Component implements Component_Interface {
 	 */
 	public function action_enqueue_mla() {
 		wp_enqueue_script( 'wp-rig-sharer', '//cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js', [], null, false ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+	}
+
+	/**
+	 * Add Options page
+	 */
+	public function add_options_page() {
+		if ( function_exists( 'acf_add_options_page' ) ) {	
+			acf_add_options_page( 
+				array(
+					'page_title' => 'Theme General Settings',
+					'menu_title' => 'Theme Settings',
+					'menu_slug'  => 'theme-general-settings',
+					'capability' => 'edit_posts',
+					'redirect'   => false,
+				)
+			);
+		}
 	}
 
 }
